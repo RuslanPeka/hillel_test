@@ -1,3 +1,10 @@
+<?php
+
+$a = true;
+$b = 1;
+var_export($a == $b);
+
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,6 +13,6 @@
     <title>Документ</title>
 </head>
 <body>
-    
+    <p>New Text!</p>
 </body>
 </html>
