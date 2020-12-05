@@ -97,6 +97,90 @@ echo '<b>Задание №1 - Вариант с рекурсией №2</b><br>
 myCounter3($arr);
 echo '<br><hr>';
 
+
+// Задание №2 - Работа с функциями, вызывающими друг друга
+
+echo '<br><b>Задание №2 - Функции вызывающие друг друга. Мой вариант</b><br>';
+$arr = [
+    '1' => 10,
+    '2' => [
+        '1' => 20,
+        '2' => 30,
+        '3' => 10
+    ],
+    '3' => 20
+];
+
+function arSum(array $arr) : int
+{
+    return array_sum($arr);
+}
+
+function arrSum2(array $arr) : int
+{
+    $result = arSum($arr);
+    foreach($arr as $v) {
+        if(is_array($v)) {
+            $result += arSum($v);
+        }
+    }
+    return $result;
+}
+
+echo 'Сумма всех значений массива: ' . arrSum2($arr);
+echo '<br><br><hr>';
+
+echo '<br><b>Задание №2 - Функции вызывающие друг друга. Классный авриант (другой массив)</b><br>';
+$arr = [
+    '1' => 10,
+    '2' => [
+        '1' => 20,
+        '2' => 30,
+        '3' => 10,
+        '4' => [
+            '1' => 10,
+            '2' => 20
+        ]
+    ],
+    '3' => 20
+];
+
+function arSum_С(array $arr) : int
+{
+    return array_sum($arr);
+}
+
+function arrSumRec(array $arr) : int
+{
+    $sum = arSum($arr);
+    foreach($arr as $v) {
+        if(is_array($v)) {
+            $sum += arrSumRec($v);
+        }
+    }
+    return $sum;
+}
+
+echo 'Сумма всех значений массива: ' . arrSumRec($arr);
+echo '<br><br><hr>';
+
+// Задание №3
+echo '<br><b>Задание №3 - Области видимости</b><br>';
+
+function test($a = 10)
+{
+    return $a;
+}
+
+function test1($b)
+{
+    echo test($b);
+}
+
+test1(51);
+
+echo '<br><br><hr>';
+
 ?>
     </section>
 </div>
