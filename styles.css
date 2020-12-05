@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(45deg, rgb(210, 255, 210), rgb(190, 246, 253));
+}
+
+#work_4 {
+    margin: 0 auto;
+    width: 1200px;
+    background-color:rgb(255, 255, 240);
+    border: 1px solid green;
+    font-size: 20px;
+}
+#work_4 header {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 1200px;
+}
+#work_4 header h1 {
+    text-align: center;
+}
+
+section {
+    margin: 0 auto;
+    width: 1100px;
+}
