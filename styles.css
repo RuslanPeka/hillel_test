@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(90deg, rgb(230, 230, 255), white,rgb(230, 230, 255));
+}
+
+.lesson {
+    background-color: white;
+}
+
+header {
+    margin: 0 auto;
+    width: 1200px;
+    border: 2px solid blue;
+}
+header h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 1200px;
+    font-size: 20px;
+    border: 2px solid blue;
+}
+
+#main {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 1100px;
+}
