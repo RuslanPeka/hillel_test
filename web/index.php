@@ -1,5 +1,8 @@
 <?php
 
+namespace web;
+use Core\Router;
+
 require_once "../vendor/autoload.php";
 require_once "func.php";
 // require_once "Child.php";
@@ -123,6 +126,13 @@ require_once "func.php";
             */
 
             // ========== Проект в MVC-формате ==========
+            head("Домашнее задание №6");
+            $obj = new Router;
+            echo '<pre>';
+            $obj -> run();
+            echo '</pre>';
+            br();
+
 
             ?>
         </div>
