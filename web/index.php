@@ -1,6 +1,7 @@
 <?php
+    // ========== Проект в MVC-формате ==========
     use Core\Router;
-    use Core\Help;
+    use Core\MyHelp;
     require_once "../vendor/autoload.php";
 ?>
 <!DOCTYPE html>
@@ -8,24 +9,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок №6</title>
+    <title>Урок №7</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="lesson">
-        <h1>Урок №6 - Введение в MVC</h1>
+        <h1>Урок №7 - Введение в MVC</h1>
     </header>
     <section class="lesson">
         <div id="main">
             <?php
-                // ========== Проект в MVC-формате ==========
-                $help = new Help;
-                $help -> head("Домашнее задание №6");
-                $obj = new Router;
+                $router = new Router();
+
+                MyHelp::head('1) Работа с маршрутизатором');
                 echo '<pre>';
-                $obj -> run();
+                $router -> run();
                 echo '</pre>';
-                $help -> br();
             ?>
         </div>
     </section>

@@ -4,12 +4,22 @@ namespace Core;
 
 class Router
 {
-    public $number = 10;
-    public $string = 'Text';
+    private $routingMap;
+    private $requestPath;
+
+    public function __construct()
+    {
+        $this -> routingMap = include_once '../app/Config/routingMap.php';
+        $this -> requestPath = $_SERVER['PATH_INFO']??'/';
+    }
 
     public function run()
     {
-        $class_vars = get_class_vars(Router::class);
-        return var_export($class_vars);
+        // var_export($this -> routingMap);
+        // var_export($_SERVER);
+        if(in_array($this -> requestPath, array_keys($this -> routingMap))) {
+            $classNamespace = 'App\\Controllers\\' . $this->routingMap[$this->requestPath] . 'Controller';
+            $classObj = new $classNamespace;
+        }
     }
 }

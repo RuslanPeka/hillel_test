@@ -2,14 +2,14 @@
 
 namespace Core;
 
-class Help
+class MyHelp
 {
-    public function head($str)
+    public static function head($str)
     {
         echo "<b>$str</b>";
     }
 
-    public function br() 
+    public static function br() 
     {
         echo '<br><hr><br>';
     }
