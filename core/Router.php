@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 
 class Router
@@ -15,10 +14,11 @@ class Router
 
     public function run()
     {
-        // var_export($this -> routingMap);
-        // var_export($_SERVER);
         if(in_array($this -> requestPath, array_keys($this -> routingMap))) {
-            $classNamespace = 'App\\Controllers\\' . $this->routingMap[$this->requestPath] . 'Controller';
+            $classNamespace = 'App\\Controllers\\' . $this->routingMap[$this->requestPath];
+            $classObj = new $classNamespace;
+        } else {
+            $classNamespace = 'App\\Controllers\\Error404';
             $classObj = new $classNamespace;
         }
     }

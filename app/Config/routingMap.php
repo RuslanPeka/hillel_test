@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '/' => 'Home',
+    '/' => 'index',
     '/about' => 'about',
     '/gallery' => 'gallery'
 ];
