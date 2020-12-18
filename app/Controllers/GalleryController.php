@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Error404
+class GalleryController
 {
     public function __construct()
     {
-        echo 'Error, 404';
+        echo 'Контроллер Gallery';
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Index
+class Error404Controller
 {
     public function __construct()
     {
-        echo 'Контроллер Index';
+        echo 'Error, 404';
     }
 }

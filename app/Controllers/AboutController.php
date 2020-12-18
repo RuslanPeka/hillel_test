@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class About
+class AboutController
 {
     public function __construct()
     {

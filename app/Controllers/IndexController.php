@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Gallery
+class IndexController
 {
     public function __construct()
     {
-        echo 'Контроллер Gallery';
+        echo 'Контроллер Index';
     }
 }

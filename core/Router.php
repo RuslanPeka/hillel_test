@@ -15,10 +15,10 @@ class Router
     public function run()
     {
         if(in_array($this -> requestPath, array_keys($this -> routingMap))) {
-            $classNamespace = 'App\\Controllers\\' . $this->routingMap[$this->requestPath];
+            $classNamespace = 'App\\Controllers\\' . $this->routingMap[$this->requestPath] . 'Controller';
             $classObj = new $classNamespace;
         } else {
-            $classNamespace = 'App\\Controllers\\Error404';
+            $classNamespace = 'App\\Controllers\\Error404Controller';
             $classObj = new $classNamespace;
         }
     }
