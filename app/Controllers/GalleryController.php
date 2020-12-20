@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class GalleryController
+class GalleryController extends Controller
 {
     public function __construct()
     {

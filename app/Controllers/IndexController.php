@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
-class IndexController
+class IndexController extends Controller
 {
     public function __construct()
     {
         echo 'Контроллер Index';
+        $this->generate('Main', 'Main');
     }
 }
