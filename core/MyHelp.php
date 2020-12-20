@@ -13,4 +13,10 @@ class MyHelp
     {
         echo '<br><hr><br>';
     }
+
+    public static function css()
+    {
+        $css = $_SERVER['REQUEST_URI'];
+        echo $css;
+    }
 }

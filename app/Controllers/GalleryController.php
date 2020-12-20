@@ -6,6 +6,6 @@ class GalleryController extends Controller
 {
     public function __construct()
     {
-        echo 'Контроллер Gallery';
+        $this->generate('Main', 'Gallery');
     }
 }
