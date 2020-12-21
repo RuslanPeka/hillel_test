@@ -15,11 +15,18 @@ class Router
 
     public function run()
     {
-        $classNamespace = 'App\\Controllers\\';
+        $uri = $_SERVER['REQUEST_URI'];
+        $arr = explode('/', $uri);
+        $classNamespace = 'App\\Controllers\\Main\\';
+        foreach($arr as $v) {
+            if($v == 'admin') {
+                $classNamespace = 'App\\Controllers\\Admin\\';
+            }
+        }
         if(in_array($this -> requestPath, array_keys($this -> routingMap))) {
             $classNamespace .= $this->routingMap[$this->requestPath];
         } else {
-            $classNamespace .= 'Error404';
+            $classNamespace = 'App\\Controllers\\Error404';
         }
         $classNamespace .= 'Controller';
         $classObj = new $classNamespace;

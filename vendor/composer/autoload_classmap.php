@@ -6,11 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Controllers\\AboutController' => $baseDir . '/app/Controllers/AboutController.php',
-    'App\\Controllers\\Controller' => $baseDir . '/app/Controllers/Controller.php',
+    'App\\Controllers\\Admin\\ArticlesAdminController' => $baseDir . '/app/Controllers/Admin/ArticlesAdminController.php',
+    'App\\Controllers\\Admin\\Controller' => $baseDir . '/app/Controllers/Admin/Controller.php',
+    'App\\Controllers\\Admin\\MainAdminController' => $baseDir . '/app/Controllers/Admin/MainAdminController.php',
+    'App\\Controllers\\Admin\\UsersAdminController' => $baseDir . '/app/Controllers/Admin/UsersAdminController.php',
     'App\\Controllers\\Error404Controller' => $baseDir . '/app/Controllers/Error404Controller.php',
-    'App\\Controllers\\GalleryController' => $baseDir . '/app/Controllers/GalleryController.php',
-    'App\\Controllers\\IndexController' => $baseDir . '/app/Controllers/IndexController.php',
+    'App\\Controllers\\Main\\AboutController' => $baseDir . '/app/Controllers/Main/AboutController.php',
+    'App\\Controllers\\Main\\Controller' => $baseDir . '/app/Controllers/Main/Controller.php',
+    'App\\Controllers\\Main\\GalleryController' => $baseDir . '/app/Controllers/Main/GalleryController.php',
+    'App\\Controllers\\Main\\IndexController' => $baseDir . '/app/Controllers/Main/IndexController.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Core\\MyHelp' => $baseDir . '/core/MyHelp.php',
     'Core\\Router' => $baseDir . '/core/Router.php',
