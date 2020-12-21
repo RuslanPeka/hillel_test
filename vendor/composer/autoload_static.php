@@ -30,15 +30,15 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
 
     public static $classMap = array (
         'App\\Controllers\\Admin\\ArticlesAdminController' => __DIR__ . '/../..' . '/app/Controllers/Admin/ArticlesAdminController.php',
-        'App\\Controllers\\Admin\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Admin/Controller.php',
         'App\\Controllers\\Admin\\MainAdminController' => __DIR__ . '/../..' . '/app/Controllers/Admin/MainAdminController.php',
         'App\\Controllers\\Admin\\UsersAdminController' => __DIR__ . '/../..' . '/app/Controllers/Admin/UsersAdminController.php',
-        'App\\Controllers\\Error404Controller' => __DIR__ . '/../..' . '/app/Controllers/Error404Controller.php',
+        'App\\Controllers\\General\\Controller' => __DIR__ . '/../..' . '/app/Controllers/General/Controller.php',
+        'App\\Controllers\\General\\Error404Controller' => __DIR__ . '/../..' . '/app/Controllers/General/Error404Controller.php',
         'App\\Controllers\\Main\\AboutController' => __DIR__ . '/../..' . '/app/Controllers/Main/AboutController.php',
-        'App\\Controllers\\Main\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Main/Controller.php',
         'App\\Controllers\\Main\\GalleryController' => __DIR__ . '/../..' . '/app/Controllers/Main/GalleryController.php',
         'App\\Controllers\\Main\\IndexController' => __DIR__ . '/../..' . '/app/Controllers/Main/IndexController.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Core\\ClassNamespace' => __DIR__ . '/../..' . '/core/ClassNamespace.php',
         'Core\\MyHelp' => __DIR__ . '/../..' . '/core/MyHelp.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'Core\\View' => __DIR__ . '/../..' . '/core/View.php',

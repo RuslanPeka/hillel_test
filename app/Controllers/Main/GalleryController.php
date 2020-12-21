@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Main;
 
-// use App\Controller;
+use App\Controllers\General\Controller;
 
 class GalleryController extends Controller
 {
