@@ -3,11 +3,14 @@
 namespace App\Controllers\Main;
 
 use App\Controllers\General\Controller;
+use App\Models\Gallery;
 
 class GalleryController extends Controller
 {
-    public function __construct()
+    public function go()
     {
-        $this->generate('Main', 'Gallery');
+        $objModel = new Gallery;
+        $modelData = $objModel->getData();
+        $this->generate('Main', 'Gallery', $modelData);
     }
 }

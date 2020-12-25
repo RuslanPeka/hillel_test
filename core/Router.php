@@ -11,7 +11,7 @@ class Router
 
     public function __construct()
     {
-        $this->routingMap = include_once '../app/Config/routingMap.php';
+        $this->routingMap = include_once 'app/Config/routingMap.php';
         $this->requestPath = $_SERVER['PATH_INFO']??'/';
     }
     
@@ -25,5 +25,6 @@ class Router
         }
         $classNamespace .= 'Controller';
         $classObj = new $classNamespace;
+        $classObj->go();
     }
 }

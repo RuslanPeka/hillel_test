@@ -14,9 +14,17 @@ class MyHelp
         echo '<br><hr><br>';
     }
 
-    public static function css()
+    public static function export($var)
     {
-        $css = $_SERVER['REQUEST_URI'];
-        echo $css;
+        echo '<pre>';
+        print_r($var);
+        echo '</pre>';
+    }
+
+    public static function className($name)
+    {
+        $url = get_class($name);
+        $arr = explode('\\', $url);
+        return end($arr);
     }
 }

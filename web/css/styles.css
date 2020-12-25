@@ -4,7 +4,7 @@
 }
 
 body {
-    background: linear-gradient(90deg, rgb(255, 210, 255), white,rgb(255, 210, 255));
+    background: linear-gradient(90deg, rgb(200, 170, 170), white, rgb(200, 170, 170));
 }
 
 .lesson {
@@ -14,7 +14,7 @@ body {
 header {
     margin: 0 auto;
     width: 1200px;
-    border: 2px solid magenta;
+    border: 2px solid brown;
 }
 header h1 {
     margin: 0 auto;
@@ -23,8 +23,8 @@ header h1 {
     padding: 10px;
     width: 1100px;
     text-align: center;
-    background: linear-gradient(90deg, white, magenta,  magenta, white);
-    color: rgb(230, 255, 230);
+    background: linear-gradient(90deg, white, brown,  brown, white);
+    color: white;
 }
 
 section {
@@ -32,7 +32,7 @@ section {
     margin-top: 20px;
     width: 1200px;
     font-size: 20px;
-    border: 2px solid magenta;
+    border: 2px solid brown;
 }
 
 #main {
@@ -47,7 +47,7 @@ section {
 #main_menu {
     margin-bottom: 20px;
     width: 1200px;
-    outline: 2px solid magenta;
+    outline: 2px solid brown;
 }
 #main_menu ul {
     width: 1200px;
@@ -56,20 +56,16 @@ section {
     padding: 10px 30px 10px 30px;
     display: inline-block;
     list-style: none;
-    background-color: magenta;
+    background-color: brown;
     /* outline: 2px solid greenyellow; */
 }
 #main_menu ul li:first-child {
     margin-left: 1px;
 }
 #main_menu ul li:hover {
-    background: linear-gradient(90deg, white, magenta,  magenta, white)
+    background: linear-gradient(90deg, white, brown,  brown, white);
 }
 #main_menu ul li a {
     color: white;
     text-decoration: none;
-}
-
-.li_indent {
-    margin-left: -5px;
 }

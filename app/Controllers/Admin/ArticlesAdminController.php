@@ -6,7 +6,7 @@ use App\Controllers\General\Controller;
 
 class ArticlesAdminController extends Controller
 {
-    public function __construct()
+    public function go()
     {
         $this->generate('Admin', 'ArticlesAdmin');
     }
