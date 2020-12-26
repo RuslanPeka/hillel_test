@@ -59,9 +59,9 @@ section {
     background-color: brown;
     /* outline: 2px solid greenyellow; */
 }
-#main_menu ul li:first-child {
+/* #main_menu ul li:first-child {
     margin-left: 1px;
-}
+} */
 #main_menu ul li:hover {
     background: linear-gradient(90deg, white, brown,  brown, white);
 }

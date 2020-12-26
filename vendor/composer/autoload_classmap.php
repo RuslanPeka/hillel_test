@@ -20,7 +20,7 @@ return array(
     'App\\Models\\Index' => $baseDir . '/app/Models/Index.php',
     'App\\Models\\UserPermissions' => $baseDir . '/app/Models/UserPermissions.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/Users.php',
-    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Components\\Orm\\Connector\\Connector' => $baseDir . '/components/Orm/Connector.php',
     'Core\\ClassNamespace' => $baseDir . '/core/ClassNamespace.php',
     'Core\\MyHelp' => $baseDir . '/core/MyHelp.php',
     'Core\\Router' => $baseDir . '/core/Router.php',

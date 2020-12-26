@@ -10,6 +10,7 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
         'C' => 
         array (
             'Core\\' => 5,
+            'Components\\' => 11,
         ),
         'A' => 
         array (
@@ -21,6 +22,10 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
         'Core\\' => 
         array (
             0 => __DIR__ . '/../..' . '/core',
+        ),
+        'Components\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/components',
         ),
         'App\\' => 
         array (
@@ -43,7 +48,7 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
         'App\\Models\\Index' => __DIR__ . '/../..' . '/app/Models/Index.php',
         'App\\Models\\UserPermissions' => __DIR__ . '/../..' . '/app/Models/UserPermissions.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Components\\Orm\\Connector\\Connector' => __DIR__ . '/../..' . '/components/Orm/Connector.php',
         'Core\\ClassNamespace' => __DIR__ . '/../..' . '/core/ClassNamespace.php',
         'Core\\MyHelp' => __DIR__ . '/../..' . '/core/MyHelp.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',

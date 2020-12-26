@@ -59,9 +59,9 @@ section {
     background-color: rgb(70, 70, 255);
     /* outline: 2px solid greenyellow; */
 }
-#main_menu ul li:first-child {
+/* #main_menu ul li:first-child {
     margin-left: 1px;
-}
+} */
 #main_menu ul li:hover {
     background: linear-gradient(90deg, white, rgb(70, 70, 255),  rgb(70, 70, 255), white)
 }
