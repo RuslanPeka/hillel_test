@@ -2,24 +2,19 @@
     // ========== Проект в MVC-формате ==========
     use Core\Router;
     use Core\MyHelp;
+    use Components\Orm\Connector;
     require_once "vendor/autoload.php";
+
+    // Подключение к БД
+    $connection = new Connector('hillel');
+    $db = $connection->connect();
+
+    // Доказательсов работоспособности подключения
+    foreach($db->query('SELECT * from user_permissions') as $val)
+    {
+        MyHelp::export($val);
+    }
 
     $router = new Router();
     $router->run();
 ?>
-
-
-<!-- 
-    *** Альтернативный вариант файла .htaccess ***
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
-
-RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?$1 [L,QSA]
- -->

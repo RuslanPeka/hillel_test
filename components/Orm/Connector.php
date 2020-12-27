@@ -1,6 +1,7 @@
 <?php
 
-namespace Components\Orm\Connector;
+namespace Components\Orm;
+use PDO;
 
 class Connector
 {
@@ -9,10 +10,10 @@ class Connector
         'hillel' => 'app/Config/configDB.php'
     ];
 
-    public function __counstruct(string $dbName = 'test')
-    {
+    public function __construct($dbName)
+    {   
         if(array_key_exists($dbName, $this->configPath)) {
-            $this->config = require_once $this->configPath[$dbName];
+            $this->config = include_once $this->configPath[$dbName];
         } else {
             throw new Exception('DB Name not valid');
         }
@@ -20,6 +21,10 @@ class Connector
 
     public function connect()
     {
+        if(empty($this->config['dbDriver'])) {
+            throw new Exeption('Bad dbDriver');
+        }
+
         if(empty($this->config['dbName'])) {
             throw new Exeption('Bad dbName');
         }
@@ -36,12 +41,14 @@ class Connector
             throw new Exeption('Bad dbUserPass');
         }
 
-        if(empty($this->config['dbDriver'])) {
-            throw new Exeption('Bad dbDriver');
-        }
+        // Пример с классной работы
+        // $dns = $this->config['dbDriver'] . ':' . $this->config['dbHost'] . '=' . $this->config['dbName'];
 
-        $dns = $this->config['dbDriver'] . ':' . $this->config['dbHost'] . '=' . $this->config['dbName'];
+        // Пример с php.net:
+        // $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
 
-        return new PDO($dns, $this->config['dbUser'], $this->config['dbPass']);
+        $dns = $this->config['dbDriver'] . ':host=' . $this->config['dbHost'] . ';dbname=' . $this->config['dbName'];
+
+        return new PDO($dns, $this->config['dbUser'], $this->config['dbUserPass']);
     }
 }
