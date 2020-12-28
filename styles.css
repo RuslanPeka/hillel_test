@@ -19,6 +19,24 @@ header {
 header h1 {
     margin-top: 20px;
     margin-bottom: 20px;
+    background: linear-gradient(90deg, rgb(210, 255, 210), rgb(190, 246, 253));
+}
+
+#work_4 {
+    margin: 0 auto;
+    width: 1200px;
+    background-color:rgb(255, 255, 240);
+    border: 1px solid green;
+    font-size: 20px;
+}
+#work_4 header {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 1200px;
+}
+#work_4 header h1 {
+
     text-align: center;
 }
 
@@ -35,4 +53,35 @@ section {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 1100px;
+    background-color: rgb(226, 255, 226);
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: gold;
+}
+tr:hover th {
+    background-color: gold;
+}
+
+td, th {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 30px;
+}
+
+th {
+    background-color: lightgray;
+}
+
+table {
+    background-color: white;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
