@@ -6,13 +6,10 @@ class ClassNamespace
 {
     public static function createNamespace()
     {
-        $url = explode('/', $_SERVER['REQUEST_URI']);
-        $address = 'App\\Controllers\\Main\\';
-        foreach($url as $v) {
-            if($v == 'admin') {
-                $address = 'App\\Controllers\\Admin\\';
-            }
-        }
+        // Решил проблему дублирования кода заменой цикла на ветвление
+        $address = 'App\\Controllers\\';
+        if(mb_strstr($_SERVER['REQUEST_URI'], 'admin') != '') $address .= 'Admin\\';
+        else $address .= 'Main\\';
         return $address;
     }
 }
