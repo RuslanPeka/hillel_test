@@ -27,4 +27,35 @@ body {
 section {
     margin: 0 auto;
     width: 1100px;
+    background-color: rgb(226, 255, 226);
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: gold;
+}
+tr:hover th {
+    background-color: gold;
+}
+
+td, th {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 30px;
+}
+
+th {
+    background-color: lightgray;
+}
+
+table {
+    background-color: white;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
