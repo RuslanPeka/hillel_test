@@ -10,7 +10,7 @@ class Connector
         'hillel' => 'app/Config/configDB.php'
     ];
 
-    public function __construct($dbName)
+    public function __construct(string $dbName = 'hillel')
     {   
         if(array_key_exists($dbName, $this->configPath)) {
             $this->config = include_once $this->configPath[$dbName];
