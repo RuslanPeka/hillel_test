@@ -4,7 +4,16 @@
 }
 
 body {
-    background: linear-gradient(90deg, rgb(255, 215, 0), white, rgb(255, 215, 0));
+    background: linear-gradient(90deg, rgb(255, 215, 150), white, rgb(255, 215, 150));
+    background-image: url(../files/img/fon.jpg);
+}
+
+::selection {background: yellow; color: black;}
+::-moz-selection {background: yellow; color: black;}
+::-webkit-selection {background: yellow; color: black;}
+
+hr {
+    border-top: 1px solid gold;
 }
 
 .lesson {

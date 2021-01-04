@@ -1,1 +1,3 @@
-<h1>View - ArticlesAdmin</h1>
+<h1>Управление статьями</h1>
+<br>
+<hr>

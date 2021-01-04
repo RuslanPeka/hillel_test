@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="lesson">
-        <h1>Домашнее задание №9 - Работа с моделями</h1>
+        <h1>Домашнее задание №11 - Работа с БД</h1>
     </header>
     <section class="lesson">
         <nav id="main_menu">

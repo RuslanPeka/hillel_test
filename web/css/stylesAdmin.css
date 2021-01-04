@@ -5,6 +5,15 @@
 
 body {
     background: linear-gradient(90deg, rgb(220, 220, 255), white,rgb(220, 220, 255));
+    background-image: url(../files/img/fon.jpg);
+}
+
+::selection {background: blue; color: white;}
+::-moz-selection {background: blue; color: white;}
+::-webkit-selection {background: blue; color: white;}
+
+hr {
+    border-top: 1px solid blue;
 }
 
 .lesson {
