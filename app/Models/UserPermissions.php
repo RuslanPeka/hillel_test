@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\General\Model;
+use Cmponents\Orm\Select;
 
 class UserPermissions extends Model
 {

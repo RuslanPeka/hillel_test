@@ -49,7 +49,7 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
         'App\\Models\\UserPermissions' => __DIR__ . '/../..' . '/app/Models/UserPermissions.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
         'Components\\Orm\\Connector' => __DIR__ . '/../..' . '/components/Orm/Connector.php',
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Components\\Orm\\Select' => __DIR__ . '/../..' . '/components/Orm/Select.php',
         'Core\\ClassNamespace' => __DIR__ . '/../..' . '/core/ClassNamespace.php',
         'Core\\MyHelp' => __DIR__ . '/../..' . '/core/MyHelp.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',

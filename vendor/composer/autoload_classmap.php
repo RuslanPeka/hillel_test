@@ -21,7 +21,7 @@ return array(
     'App\\Models\\UserPermissions' => $baseDir . '/app/Models/UserPermissions.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/Users.php',
     'Components\\Orm\\Connector' => $baseDir . '/components/Orm/Connector.php',
-    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Components\\Orm\\Select' => $baseDir . '/components/Orm/Select.php',
     'Core\\ClassNamespace' => $baseDir . '/core/ClassNamespace.php',
     'Core\\MyHelp' => $baseDir . '/core/MyHelp.php',
     'Core\\Router' => $baseDir . '/core/Router.php',
