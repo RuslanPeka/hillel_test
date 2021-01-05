@@ -3,22 +3,27 @@
 namespace App\Models;
 
 use App\Models\General\Model;
+use Components\Orm\Select;
+use PDO;
+use Core\MyHelp;
 
 class Users extends Model
 {
-    private $data = [
-        'User1' => 'Энакин Скайвокер',
-        'User2' => 'Оби-Ван Кеноби',
-        'User3' => 'Магистр Йода'
-    ];
+    private $dataUsers = [];
 
     public function getData()
     {
-        return $this->data;
+        return $this->dataUsers;
     }
 
-    public function setData($val)
+    public function setData($columns = 'first_name', $tableName = 'users')
     {
-        $this->data = $val;
+        $sel = new Select();
+        $sel->setColumns($columns);
+        $sel->setTableName($tableName);
+        $result = $sel->execute();
+        while ($row = $result->fetch(PDO::FETCH_LAZY)) {
+            $this->dataUsers[] = $row->$columns;
+        }
     }
 }

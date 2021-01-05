@@ -22,6 +22,7 @@ return array(
     'App\\Models\\Users' => $baseDir . '/app/Models/Users.php',
     'Components\\Orm\\Connector' => $baseDir . '/components/Orm/Connector.php',
     'Components\\Orm\\Select' => $baseDir . '/components/Orm/Select.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Core\\ClassNamespace' => $baseDir . '/core/ClassNamespace.php',
     'Core\\MyHelp' => $baseDir . '/core/MyHelp.php',
     'Core\\Router' => $baseDir . '/core/Router.php',

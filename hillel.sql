@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 26 2020 г., 13:02
+-- Время создания: Янв 05 2021 г., 04:02
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.5
 
@@ -29,14 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` bigint NOT NULL,
-  `first_name` char(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `second_name` char(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `e_mail` char(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `pass` char(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `first_name` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `second_name` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `e_mail` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pass` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_user_permission` tinyint NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `second_name`, `e_mail`, `pass`, `id_user_permission`, `create_at`, `update_at`) VALUES
+(1, 'Anakin', 'Skywalker', 'AnSk@ukr.net', '123456', 3, '2021-01-04 22:49:40', '2021-01-04 22:49:40'),
+(2, 'Obi-Wan', 'Kenobi', 'ObKen@ukr.net', '123456', 4, '2021-01-04 22:51:02', '2021-01-04 22:51:02'),
+(3, 'Yoda', NULL, 'Yoda@ukr.net', '123456', 2, '2021-01-04 22:52:19', '2021-01-04 22:52:19');
 
 -- --------------------------------------------------------
 
@@ -46,7 +55,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `user_permissions` (
   `id` int NOT NULL,
-  `name` char(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -85,7 +94,7 @@ ALTER TABLE `user_permissions`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `user_permissions`

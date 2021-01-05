@@ -2,8 +2,8 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\Users;
 use App\Models\UserPermissions;
+use App\Models\Users;
 use Core\MyHelp;
 
 use App\Controllers\General\Controller;
@@ -12,11 +12,13 @@ class UsersAdminController extends Controller
 {
     public function go()
     {
-        $objModel1 = new Users;
-        $objModel2 = new UserPermissions;
+        $objUsers = new Users;
+        $objUsers->setData();
+        $objUserPermis = new UserPermissions;
+        $objUserPermis->setData();
         $modelData = [];
-        $modelData = [MyHelp::className($objModel1) => $objModel1->getData()];
-        $modelData += [MyHelp::className($objModel2) => $objModel2->getData()];
+        $modelData = [MyHelp::className($objUsers) => $objUsers->getData()];
+        $modelData += [MyHelp::className($objUserPermis) => $objUserPermis->getData()];
         $this->generate('Admin', 'UsersAdmin', $modelData);
     }
 }
