@@ -21,6 +21,9 @@ class Users extends Model
         $sel = new Select();
         $sel->setColumns($columns);
         $sel->setTableName($tableName);
+        // $sel->setJoinTable('user_permissions');
+        // $sel->setJoinMainColumn('id_user_permission');
+        // $sel->setJoinColumn('id');
         $result = $sel->execute();
         while ($row = $result->fetch(PDO::FETCH_LAZY)) {
             $this->dataUsers[] = $row->$columns;

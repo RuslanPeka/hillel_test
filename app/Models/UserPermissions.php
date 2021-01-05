@@ -25,6 +25,9 @@ class UserPermissions extends Model
         // $set->setGroup($group);
         // $set->setLimit(2);
         // $set->setOffset(1);
+        $set->setJoinTable('users');
+        $set->setJoinMainColumn('id');
+        $set->setJoinColumn('id_user_permission');
         $result = $set->execute();
         while ($row = $result->fetch(PDO::FETCH_LAZY)) {
             $this->dataPermissions[] = $row->$columns;

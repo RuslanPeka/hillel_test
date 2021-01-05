@@ -13,6 +13,9 @@ class Select
     private $group;
     private $limit;
     private $offset;
+    private $joinTable;
+    private $joinMainColumn;
+    private $joinColumn;
 
     public function __construct()
     {
@@ -48,6 +51,21 @@ class Select
     public function setOffset($offset)
     {
         $this->offset = $offset;
+    }
+
+    public function setJoinTable($joinTable)
+    {
+        $this->joinTable = $joinTable;
+    }
+
+    public function setJoinMainColumn($joinMainColumn)
+    {
+        $this->joinMainColumn = $joinMainColumn;
+    }
+
+    public function setJoinColumn($joinColumn)
+    {
+        $this->joinColumn = $joinColumn;
     }
 
     private function prepareColumns()
@@ -93,10 +111,12 @@ class Select
         $result .= $this->prepareColumns();
         $result .= ' FROM ';
         $result .= $this->prepareTableName();
+        if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) $result .= ', ' . $this->joinTable . ' WHERE ' . $this->prepareTableName() . '.' . $this->joinMainColumn . ' = ' . $this->joinTable . '.' . $this->joinColumn;
         if(!empty($this->order)) $result .= ' GROUP BY ' . $this->group;
         if(!empty($this->order)) $result .= ' ORDER BY ' . $this->order;
         if(!empty($this->limit) && empty($this->offset)) $result .= ' LIMIT ' . $this->limit;
         if(!empty($this->limit) && !empty($this->offset)) $result .= ' LIMIT ' . $this->limit . ' OFFSET ' . $this->offset;
+        // MyHelp::export($result);
         return $result;
     }
 
