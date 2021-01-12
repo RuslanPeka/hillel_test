@@ -69,6 +69,21 @@ class Select
         $this->joinColumn = $joinColumn;
     }
 
+    private function prepareJoin()
+    {
+        $result = '';
+        if(is_array($this->joinTable)) {
+            $count = count($this->joinTable);
+            for($i = 0; $i <= $count; $i++) {
+                if($i = 0) continue;
+                if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) $result .= ' INNER JOIN ' . $this->joinTable[$i-1] . ' ON ' . $this->joinTable[$i-1] . '.' . $this->joinColumn[$i-1] . ' = ' . $this->joinTable[$i] . '.' . $this->joinColumn[$i];
+            }
+        } else {
+            if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) $result .= ', ' . $this->joinTable . ' WHERE ' . $this->prepareTableName() . '.' . $this->joinMainColumn . ' = ' . $this->joinTable . '.' . $this->joinColumn;
+        }
+        return $result;
+    }
+
     private function prepareColumns()
     {
         $result = '';
@@ -112,7 +127,7 @@ class Select
         $result .= $this->prepareColumns();
         $result .= ' FROM ';
         $result .= $this->prepareTableName();
-        if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) $result .= ', ' . $this->joinTable . ' WHERE ' . $this->prepareTableName() . '.' . $this->joinMainColumn . ' = ' . $this->joinTable . '.' . $this->joinColumn;
+        if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) $result .= $this->prepareJoin();
         if(!empty($this->order)) $result .= ' GROUP BY ' . $this->group;
         if(!empty($this->order)) $result .= ' ORDER BY ' . $this->order;
         if(!empty($this->limit) && empty($this->offset)) $result .= ' LIMIT ' . $this->limit;
