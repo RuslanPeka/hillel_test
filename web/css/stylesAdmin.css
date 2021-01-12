@@ -88,17 +88,17 @@ section {
 }
 
 .users_table th {
-    background-color: blue;
+    background-color: rgb(70, 70, 255);
     color: white;
 }
 
-.users_table th::selection {background: white; color: blue;}
-.users_table th::-moz-selection {background: white; color: blue;}
-.users_table th::-webkit-selection {background: white; color: blue;}
+.users_table th::selection {background: blue; color: white;}
+.users_table th::-moz-selection {background: blue; color: white;}
+.users_table th::-webkit-selection {background: blue; color: white;}
 
 .users_table th, td {
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
-    border: 1px solid blue;
+    border: 1px solid rgb(70, 70, 255);
 }
