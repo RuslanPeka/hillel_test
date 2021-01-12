@@ -17,16 +17,19 @@ class Where
     public function getWhere($type = self::AND_CONDITION)
     {
         $result = '';
-        if(is_array($this->condition)) {
-            foreach($this->condition as $col => $condition) {
-                if(empty($result)) {
-                    $result = $col . '=' . $condition;
-                } else {
-                    $result .= ' ' . $type . ' ' . $col . '=' . $condition;
+        if(!empty($this->condition)) {
+            $result .= ' WHERE ';
+            if(is_array($this->condition)) {
+                foreach($this->condition as $col => $condition) {
+                    if(empty($result)) {
+                        $result .= $col . '=' . $condition;
+                    } else {
+                        $result .= ' ' . $type . ' ' . $col . '=' . $condition;
+                    }
                 }
+            } else {
+                $result .= $this->condition;
             }
-        } else {
-            $result = $this->condition;
         }
         return $result;
     }

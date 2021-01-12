@@ -132,6 +132,7 @@ class Select
         if(!empty($this->order)) $result .= ' ORDER BY ' . $this->order;
         if(!empty($this->limit) && empty($this->offset)) $result .= ' LIMIT ' . $this->limit;
         if(!empty($this->limit) && !empty($this->offset)) $result .= ' LIMIT ' . $this->limit . ' OFFSET ' . $this->offset;
+
         // MyHelp::export($result);
         return $result;
     }
