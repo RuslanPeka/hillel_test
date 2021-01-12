@@ -1,1 +1,3 @@
-<h1>View - Gallery</h1>
+<h1>Галерея</h1>
+<br>
+<hr>

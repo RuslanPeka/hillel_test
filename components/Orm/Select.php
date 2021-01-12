@@ -1,6 +1,8 @@
 <?php
 
 namespace Components\Orm;
+
+use Core\MyHelp;
 use PDO;
 
 class Select
@@ -8,6 +10,13 @@ class Select
     private $columns = '*';
     private $tableName;
     private $connect;
+    private $order;
+    private $group;
+    private $limit;
+    private $offset;
+    private $joinTable;
+    private $joinMainColumn;
+    private $joinColumn;
 
     public function __construct()
     {
@@ -15,24 +24,59 @@ class Select
         $this->connect = $connector->connect();
     }
 
-    public function setColumns($col)
+    public function setColumns($columns)
     {
-        $this->columns = $col;
+        $this->columns = $columns;
     }
 
-    public function setTableName($name)
+    public function setTableName($tableName)
     {
-        $this->tableName = $name;
+        $this->tableName = $tableName;
+    }
+
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    public function setGroup($group)
+    {
+        $this->group = $group;
+    }
+
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+    }
+
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
+
+    public function setJoinTable($joinTable)
+    {
+        $this->joinTable = $joinTable;
+    }
+
+    public function setJoinMainColumn($joinMainColumn)
+    {
+        $this->joinMainColumn = $joinMainColumn;
+    }
+
+    public function setJoinColumn($joinColumn)
+    {
+        $this->joinColumn = $joinColumn;
     }
 
     private function prepareColumns()
     {
         $result = '';
         if(is_array($this->columns)) {
-            foreach($this->columns as $alias => $v) {
+            foreach($this->columns as $alias => $val) {
                 $piece = '';
                 if(is_int($alias)) $piece = $val;
-                else $piece = $v . ' AS ' . $alias;
+                else $piece = $val . ' AS ' . $alias;
 
                 if(empty($result)) $result = $piece;
                 else $result .= ', ' . $piece;
@@ -43,20 +87,20 @@ class Select
         return $result;
     }
 
-    private function prepareTable()
+    private function prepareTableName()
     {
         $result = '';
         if(is_array($this->tableName)) {
-            foreach($this->tableName as $alias => $v) {
+            foreach($this->tableName as $alias => $val) {
                 $piece = '';
                 if(is_int($alias)) $piece = $val;
-                else $piece = $v . ' AS ' . $alias;
+                else $piece = $val . ' AS ' . $alias;
 
                 if(empty($result)) $result = $piece;
                 else $result .= ', ' . $piece;
             }
         } else {
-            $result = $this->tableNames;
+            $result = $this->tableName;
         }
         return $result;
     }
@@ -64,10 +108,16 @@ class Select
     private function createSql():string
     {
         $result = '';
-        $result .= $this->sqlString = 'SELECT ';
+        $result .= 'SELECT ';
         $result .= $this->prepareColumns();
-        $result .= $this->sqlString .= ' FROM ';
-        $result .= $this->prepareTable();
+        $result .= ' FROM ';
+        $result .= $this->prepareTableName();
+        if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) $result .= ', ' . $this->joinTable . ' WHERE ' . $this->prepareTableName() . '.' . $this->joinMainColumn . ' = ' . $this->joinTable . '.' . $this->joinColumn;
+        if(!empty($this->order)) $result .= ' GROUP BY ' . $this->group;
+        if(!empty($this->order)) $result .= ' ORDER BY ' . $this->order;
+        if(!empty($this->limit) && empty($this->offset)) $result .= ' LIMIT ' . $this->limit;
+        if(!empty($this->limit) && !empty($this->offset)) $result .= ' LIMIT ' . $this->limit . ' OFFSET ' . $this->offset;
+        // MyHelp::export($result);
         return $result;
     }
 

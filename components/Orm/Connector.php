@@ -13,7 +13,7 @@ class Connector
     public function __construct(string $dbName = 'hillel')
     {   
         if(array_key_exists($dbName, $this->configPath)) {
-            $this->config = include_once $this->configPath[$dbName];
+            $this->config = include $this->configPath[$dbName];
         } else {
             throw new Exception('DB Name not valid');
         }
@@ -41,14 +41,8 @@ class Connector
             throw new Exeption('Bad dbUserPass');
         }
 
-        // Пример с классной работы
-        // $dns = $this->config['dbDriver'] . ':' . $this->config['dbHost'] . '=' . $this->config['dbName'];
-
-        // Пример с php.net:
-        // $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
-
         $dns = $this->config['dbDriver'] . ':host=' . $this->config['dbHost'] . ';dbname=' . $this->config['dbName'];
-
         return new PDO($dns, $this->config['dbUser'], $this->config['dbUserPass']);
+        
     }
 }

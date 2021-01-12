@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="/web/css/styles.css">
 </head>
 <body>
-    <header class="lesson">
-        <h1>Домашнее задание №9 - Работа с моделями</h1>
+    <header class="lesson_header">
+        <h1>Классная работа №12 - Работа с формами</h1>
     </header>
     <section class="lesson">
-        <nav id="main_menu">
+        <nav class="main_menu">
             <ul>
                 <li><a href="/index.php/">Главная</a></li><!--
                 --><li class="li_indent"><a href="about">О нас</a></li><!--
@@ -22,7 +22,7 @@
                 --><li class="li_indent"><a href="/index.php/admin">Админ-панель</a></li>
             </ul>
         </nav>
-        <div id="main">
+        <div class="main">
             <?php
                 require_once 'Main\\' . $page . '.php';
                 if(!empty($data)) {

@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="/web/css/stylesAdmin.css">
 </head>
 <body>
-    <header class="lesson">
+    <header class="lesson_header">
         <h1>Админ-панель</h1>
     </header>
     <section class="lesson">
-        <nav id="main_menu">
+        <nav class="main_menu">
             <ul>
                 <li><a href="/index.php/admin">Главная страница</a></li><!--
                 --><li class="li_indent"><a href="/index.php/admin/articlesAdmin">Статьи</a></li><!--
@@ -22,13 +22,13 @@
                 --><li class="li_indent"><a href="/index.php/">Сайт</a></li>
             </ul>
         </nav>
-        <div id="main">
+        <div class="main">
             <?php
                 require_once 'Admin\\' . $page . '.php';
-                if(!empty($data)) {
-                    echo '<br><b>Данные модели:</b>';
-                    MyHelp::export($data);
-                }
+                // if(!empty($data)) {
+                //     echo '<br><b>Данные модели:</b>';
+                //     MyHelp::export($data);
+                // }
             ?>
         </div>
     </section>

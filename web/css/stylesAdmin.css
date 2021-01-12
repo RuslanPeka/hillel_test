@@ -5,10 +5,20 @@
 
 body {
     background: linear-gradient(90deg, rgb(220, 220, 255), white,rgb(220, 220, 255));
+    background-image: url(../files/img/fon.jpg);
 }
 
-.lesson {
+::selection {background: blue; color: white;}
+::-moz-selection {background: blue; color: white;}
+::-webkit-selection {background: blue; color: white;}
+
+hr {
+    border-top: 1px solid blue;
+}
+
+.lesson_header {
     background-color: white;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 header {
@@ -23,7 +33,7 @@ header h1 {
     padding: 10px;
     width: 1100px;
     text-align: center;
-    background: linear-gradient(90deg, white, rgb(70, 70, 255),  rgb(70, 70, 255), white);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgb(70, 70, 255),  rgb(70, 70, 255), rgba(255, 255, 255, 0));
     color: white;
 }
 
@@ -35,37 +45,60 @@ section {
     border: 2px solid rgb(70, 70, 255);
 }
 
-#main {
+.main {
     overflow: auto;
     margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
     width: 1100px;
+    background-color: white;
     text-overflow: inherit;
 }
 
-#main_menu {
-    margin-bottom: 20px;
+.main_menu {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.main_menu {
     width: 1200px;
     outline: 2px solid rgb(70, 70, 255);
 }
-#main_menu ul {
+.main_menu ul {
     width: 1200px;
 }
-#main_menu ul li {
+.main_menu ul li {
     padding: 10px 30px 10px 30px;
     display: inline-block;
     list-style: none;
     background-color: rgb(70, 70, 255);
-    /* outline: 2px solid greenyellow; */
 }
-/* #main_menu ul li:first-child {
-    margin-left: 1px;
-} */
-#main_menu ul li:hover {
-    background: linear-gradient(90deg, white, rgb(70, 70, 255),  rgb(70, 70, 255), white)
+
+.main_menu ul li:hover {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgb(70, 70, 255),  rgb(70, 70, 255), rgba(255, 255, 255, 0))
 }
-#main_menu ul li a {
+.main_menu ul li a {
     color: white;
     text-decoration: none;
+}
+
+.users_table {
+    border-collapse: collapse;
+}
+
+.users_table th {
+    background-color: blue;
+    color: white;
+}
+
+.users_table th::selection {background: white; color: blue;}
+.users_table th::-moz-selection {background: white; color: blue;}
+.users_table th::-webkit-selection {background: white; color: blue;}
+
+.users_table th, td {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border: 1px solid blue;
 }

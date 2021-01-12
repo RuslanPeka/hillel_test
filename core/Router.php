@@ -20,12 +20,11 @@ class Router
         $classNamespace = ClassNamespace::createNamespace();
         if(in_array($this->requestPath, array_keys($this->routingMap))) {
             $classNamespace .= $this->routingMap[$this->requestPath];
-            // var_dump($this->requestPath);
         } else {
             $classNamespace = 'App\\Controllers\\General\\Error404';
         }
         $classNamespace .= 'Controller';
-        $classObj = new $classNamespace;
-        $classObj->go();
+        $this->classObj = new $classNamespace;
+        $this->classObj->go();
     }
 }
