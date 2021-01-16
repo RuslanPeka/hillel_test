@@ -53,6 +53,8 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
         'Components\\Orm\\Insert' => __DIR__ . '/../..' . '/components/Orm/Insert.php',
         'Components\\Orm\\Select' => __DIR__ . '/../..' . '/components/Orm/Select.php',
         'Components\\Orm\\Update' => __DIR__ . '/../..' . '/components/Orm/Update.php',
+        'Components\\Orm\\Where' => __DIR__ . '/../..' . '/components/Orm/Where.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Core\\ClassNamespace' => __DIR__ . '/../..' . '/core/ClassNamespace.php',
         'Core\\MyHelp' => __DIR__ . '/../..' . '/core/MyHelp.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
