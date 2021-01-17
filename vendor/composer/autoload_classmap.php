@@ -25,6 +25,8 @@ return array(
     'Components\\Orm\\Insert' => $baseDir . '/components/Orm/Insert.php',
     'Components\\Orm\\Select' => $baseDir . '/components/Orm/Select.php',
     'Components\\Orm\\Update' => $baseDir . '/components/Orm/Update.php',
+    'Components\\Orm\\Where' => $baseDir . '/components/Orm/Where.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Core\\ClassNamespace' => $baseDir . '/core/ClassNamespace.php',
     'Core\\MyHelp' => $baseDir . '/core/MyHelp.php',
     'Core\\Router' => $baseDir . '/core/Router.php',

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ-панель</title>
     <link rel="stylesheet" href="/web/css/stylesAdmin.css">
+    <link rel="shortcut icon" href="/web/files/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="lesson_header">
