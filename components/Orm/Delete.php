@@ -46,10 +46,12 @@ class Delete
         if(!empty($this->table) && !empty($this->column) && !empty($this->value)) {
             $result .= ' DELETE FROM ';
             $result .= $this->table;
-            $where = new Where;
-            $where->setColumn($this->column);
-            $where->setCondition($this->value);
-            $result .= $where->getWhere();
+            if(!empty($this->column) && !empty($this->value)) {
+                $where = new Where;
+                $where->setColumn($this->column);
+                $where->setCondition($this->value);
+                $result .= $where->getWhere();
+            }
         }
         return $result;
     }

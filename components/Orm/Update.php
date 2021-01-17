@@ -57,10 +57,12 @@ class Update
         $result = '';
         if(!empty($this->table) && !empty($this->column) && !empty($this->value)) {
             $result .= ' UPDATE ' . $this->table . ' SET ' . $this->column . $this->comparison .  '\'' . $this->value . '\'';
-            $where = new Where;
-            $where->setColumn($this->whereColumn);
-            $where->setCondition($this->whereValue);
-            $result .= $where->getWhere();
+            if(!empty($this->whereColumn) && !empty($this->whereValue)) {
+                $where = new Where;
+                $where->setColumn($this->whereColumn);
+                $where->setCondition($this->whereValue);
+                $result .= $where->getWhere();
+            }
         }
         return $result;
     }
