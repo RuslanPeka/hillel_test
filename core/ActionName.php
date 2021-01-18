@@ -26,7 +26,6 @@ class ActionName
                 $this->actionName = $last;
             }
         }
-        // MyHelp::export($isAction);
 
         if($isAction == 'no') {
             $this->actionName = 'index';
@@ -39,7 +38,6 @@ class ActionName
             $this->className = $result;
         }
         $this->actionName .= '()';
-        // MyHelp::export($this->actionName);
     }
 
     public function getClassName()

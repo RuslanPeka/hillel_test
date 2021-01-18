@@ -12,9 +12,4 @@ class ClassNamespace
         else $address .= 'Main\\';
         return $address;
     }
-
-    public function evalN($value)
-    {
-        return eval($value);
-    }
 }

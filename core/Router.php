@@ -29,16 +29,9 @@ class Router
         }
         $classNamespace .= 'Controller';
         
-        // Создаю экземпляр класса
         $this->classObj = new $classNamespace;
-
-        // Получаю правильное имя экшена, в зависимости от введённого url в поисковую строку
         $actionName = $this->action->getActionName();
-
-        MyHelp::export($actionName);    // Выводит имя экшена верно:   index()
-
-        // Но при этом...
-        $this->classObj->$actionName;   // Не срабатывает (!)
-        $this->classObj->index();       // Срабатывает корректно
+        $doAction = '$this->classObj->' . $actionName . ';';
+        eval($doAction);
     }
 }

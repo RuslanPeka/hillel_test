@@ -10,28 +10,11 @@ use App\Controllers\General\Controller;
 
 class UsersAdminController extends Controller
 {
-    // Добавление с урока №12
-    // public function indexAction()
-    // {
-    //     $objUsers = new Users();
-    //     $data = $objUsers->all();
-    //     parent::generate('Admin', 'Index', $data);
-    // }
-
     public function index()
     {
         $objUsers = new Users();
         $data = $objUsers->all();
         parent::generate('Admin', 'UsersAdmin', $data);
-
-        // $objUsers = new Users;
-        // $objUsers->setData();
-        // $objUserPermis = new UserPermissions;
-        // $objUserPermis->setData();
-        // $modelData = [];
-        // $modelData = [MyHelp::className($objUsers) => $objUsers->getData()];
-        // $modelData += [MyHelp::className($objUserPermis) => $objUserPermis->getData()];
-        // $this->generate('Admin', 'UsersAdmin', $modelData);
     }
 
     public function update()
