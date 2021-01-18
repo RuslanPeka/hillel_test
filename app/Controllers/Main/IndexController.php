@@ -7,7 +7,7 @@ use App\Models\Index;
 
 class IndexController extends Controller
 {
-    public function go()
+    public function index()
     {
         $objModel = new Index;
         $modelData = $objModel->getData();

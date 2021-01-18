@@ -27,6 +27,7 @@ return array(
     'Components\\Orm\\Update' => $baseDir . '/components/Orm/Update.php',
     'Components\\Orm\\Where' => $baseDir . '/components/Orm/Where.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Core\\ActionName' => $baseDir . '/core/ActionName.php',
     'Core\\ClassNamespace' => $baseDir . '/core/ClassNamespace.php',
     'Core\\MyHelp' => $baseDir . '/core/MyHelp.php',
     'Core\\Router' => $baseDir . '/core/Router.php',

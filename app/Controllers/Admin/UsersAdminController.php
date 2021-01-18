@@ -18,7 +18,7 @@ class UsersAdminController extends Controller
     //     parent::generate('Admin', 'Index', $data);
     // }
 
-    public function go()
+    public function index()
     {
         $objUsers = new Users();
         $data = $objUsers->all();
@@ -32,5 +32,33 @@ class UsersAdminController extends Controller
         // $modelData = [MyHelp::className($objUsers) => $objUsers->getData()];
         // $modelData += [MyHelp::className($objUserPermis) => $objUserPermis->getData()];
         // $this->generate('Admin', 'UsersAdmin', $modelData);
+    }
+
+    public function update()
+    {
+        $objUsers = new Users();
+        $data = $objUsers->all();
+        parent::generate('Admin', 'UsersAdmin', $data);
+    }
+
+    public function delete()
+    {
+        $objUsers = new Users();
+        $data = $objUsers->all();
+        parent::generate('Admin', 'UsersAdmin', $data);
+    }
+
+    public function insert()
+    {
+        $objUsers = new Users();
+        $data = $objUsers->all();
+        parent::generate('Admin', 'UsersAdmin', $data);
+    }
+
+    public function select()
+    {
+        $objUsers = new Users();
+        $data = $objUsers->all();
+        parent::generate('Admin', 'UsersAdmin', $data);
     }
 }

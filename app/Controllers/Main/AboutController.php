@@ -7,7 +7,7 @@ use App\Models\About;
 
 class AboutController extends Controller
 {
-    public function go()
+    public function index()
     {
         $objModel = new About;
         $modelData = $objModel->getData();

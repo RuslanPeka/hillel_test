@@ -1,15 +1,20 @@
 <?php
 
 namespace Core;
+use Core\MyHelp;
 
 class ClassNamespace
 {
-    public static function createNamespace()
+    public static function createNamespace($className)
     {
-        // Решил проблему дублирования кода заменой цикла на ветвление
         $address = 'App\\Controllers\\';
-        if(mb_strstr($_SERVER['REQUEST_URI'], 'admin') != '') $address .= 'Admin\\';
+        if(mb_strstr($className, 'admin') != '') $address .= 'Admin\\';
         else $address .= 'Main\\';
         return $address;
+    }
+
+    public function evalN($value)
+    {
+        return eval($value);
     }
 }
