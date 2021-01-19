@@ -11,23 +11,23 @@ class ActionName
     private $actionName;
     private $actionMap;
 
-    public function getData()
+    public function formulateData()
     {
         $this->actionMap = require_once 'app/Config/actionMap.php';
         $address = $_SERVER['REQUEST_URI'];
         $addressArr = explode('/', $address);
         $last = array_pop($addressArr);
         $actionMapArr = $this->actionMap;
-        $isAction = 'no';
+        $isAction = false;
 
         foreach($actionMapArr as $v) {
             if($v == $last) {
-                $isAction = 'yes';
+                $isAction = true;
                 $this->actionName = $last;
             }
         }
 
-        if($isAction == 'no') {
+        if($isAction == false) {
             $this->actionName = 'index';
             $this->className = $address;
         } elseif($isAction == 'yes') {
@@ -37,7 +37,6 @@ class ActionName
             }
             $this->className = $result;
         }
-        // $this->actionName .= '()';
     }
 
     public function getClassName()

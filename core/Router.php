@@ -20,7 +20,7 @@ class Router
     public function run()
     {
         $this->action = new ActionName();
-        $this->action->getData();
+        $this->action->formulateData();
         $classNamespace = ClassNamespace::createNamespace($this->action->getClassName());
         if(in_array($this->requestPath, array_keys($this->routingMap))) {
             $classNamespace .= $this->routingMap[$this->requestPath];
@@ -28,13 +28,8 @@ class Router
             $classNamespace = 'App\\Controllers\\General\\Error404';
         }
         $classNamespace .= 'Controller';
-        
         $this->classObj = new $classNamespace;
         $actionName = $this->action->getActionName();
-        
         call_user_func(array($this->classObj, $actionName));
-
-        // $doAction = '$this->classObj->' . $actionName . ';';
-        // eval($doAction);
     }
 }
