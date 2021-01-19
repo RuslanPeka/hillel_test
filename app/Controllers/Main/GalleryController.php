@@ -7,7 +7,7 @@ use App\Models\Gallery;
 
 class GalleryController extends Controller
 {
-    public function go()
+    public function index()
     {
         $objModel = new Gallery;
         $modelData = $objModel->getData();

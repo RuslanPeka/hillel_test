@@ -3,11 +3,13 @@
 namespace Core;
 
 use Core\ClassNamespace;
+use Core\ActionName;
 
 class Router
 {
     private $routingMap;
     private $requestPath;
+    private $action;
 
     public function __construct()
     {
@@ -17,7 +19,9 @@ class Router
     
     public function run()
     {
-        $classNamespace = ClassNamespace::createNamespace();
+        $this->action = new ActionName();
+        $this->action->formulateData();
+        $classNamespace = ClassNamespace::createNamespace($this->action->getClassName());
         if(in_array($this->requestPath, array_keys($this->routingMap))) {
             $classNamespace .= $this->routingMap[$this->requestPath];
         } else {
@@ -25,6 +29,7 @@ class Router
         }
         $classNamespace .= 'Controller';
         $this->classObj = new $classNamespace;
-        $this->classObj->go();
+        $actionName = $this->action->getActionName();
+        call_user_func(array($this->classObj, $actionName));
     }
 }

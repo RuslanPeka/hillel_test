@@ -6,7 +6,7 @@ use App\Controllers\General\Controller;
 
 class MainAdminController extends Controller
 {
-    public function go()
+    public function index()
     {
         $this->generate('Admin', 'MainAdmin');
     }
