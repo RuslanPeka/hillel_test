@@ -37,7 +37,7 @@ class ActionName
             }
             $this->className = $result;
         }
-        $this->actionName .= '()';
+        // $this->actionName .= '()';
     }
 
     public function getClassName()

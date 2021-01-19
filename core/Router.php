@@ -31,7 +31,10 @@ class Router
         
         $this->classObj = new $classNamespace;
         $actionName = $this->action->getActionName();
-        $doAction = '$this->classObj->' . $actionName . ';';
-        eval($doAction);
+        
+        call_user_func(array($this->classObj, $actionName));
+
+        // $doAction = '$this->classObj->' . $actionName . ';';
+        // eval($doAction);
     }
 }
