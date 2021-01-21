@@ -2,6 +2,9 @@
 
 namespace App\Models\General;
 use Components\Orm\Select;
+use Components\Orm\Update;
+use Components\Orm\Insert;
+use Components\Orm\Delete;
 
 class Model
 {

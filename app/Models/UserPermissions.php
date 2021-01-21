@@ -9,28 +9,42 @@ use Core\MyHelp;
 
 class UserPermissions extends Model
 {
-    private $dataPermissions = [];
+    protected $tableName = 'user_permissions';
 
-    public function getData()
+    public function all() 
     {
-        return $this->dataPermissions;
+        $select = $this->select();
+        $select->setTableName($this->tableName);
+        return $select->execute();
     }
 
-    public function setData($columns = "name", $tableName = 'user_permissions', $order = 'name', $group = 'name')
+    public function deleteRow() 
     {
-        $set = new Select();
-        $set->setColumns($columns);
-        $set->setTableName($tableName);
-        // $set->setOrder($order);
-        // $set->setGroup($group);
-        // $set->setLimit(2);
-        // $set->setOffset(1);
-        $set->setJoinTable('users');
-        $set->setJoinMainColumn('id');
-        $set->setJoinColumn('id_user_permission');
-        $result = $set->execute();
-        while ($row = $result->fetch(PDO::FETCH_LAZY)) {
-            $this->dataPermissions[] = $row->$columns;
+        if(!empty($_GET['id'])) {
+            $delete = $this->delete();
+            $delete->setTable($this->tableName);
+            $delete->setColumn('id');
+            $delete->setValue($_GET['id']);
+            return $delete->execute();
+        } else {
+            $this->all();
+        }
+    }
+
+    public function insertPermission()
+    {
+        if(!empty($_POST)) {
+            $insert = $this->insert();
+            $insert->setTable($this->tableName);
+            $columns = [];
+            $values = [];
+            foreach($_POST as $k => $v) {
+                $columns[] = $k;
+                $values[] = $v;
+            }
+            $insert->setColumns($columns);
+            $insert->setValues($values);
+            return $insert->execute();
         }
     }
 }

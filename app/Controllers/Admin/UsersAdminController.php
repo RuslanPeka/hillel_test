@@ -10,10 +10,16 @@ use App\Controllers\General\Controller;
 
 class UsersAdminController extends Controller
 {
+    private $conn;
+
+    public function __construct()
+    {
+        $this->conn = new Users();
+    }
+
     public function index()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
+        $data = $this->conn->all();
         parent::generate('Admin', 'UsersAdmin', $data);
     }
 
@@ -26,15 +32,15 @@ class UsersAdminController extends Controller
 
     public function delete()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
+        $data = $this->conn->deleteRow();
+        $data = $this->conn->all();
         parent::generate('Admin', 'UsersAdmin', $data);
     }
 
     public function insert()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
+        $data = $this->conn->insertUser();
+        $data = $this->conn->all();
         parent::generate('Admin', 'UsersAdmin', $data);
     }
 

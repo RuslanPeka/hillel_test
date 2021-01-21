@@ -14,6 +14,12 @@ class Delete
     private $comparison = '=';
     private $value;
 
+    public function __construct()
+    {
+        $connector = new Connector();
+        $this->connect = $connector->connect();
+    }
+
     public function setTable($table)
     {
         $this->table = $table;
@@ -34,17 +40,11 @@ class Delete
         $this->value = $value;
     }
 
-    public function __construct()
-    {
-        $connector = new Connector();
-        $this->connect = $connector->connect();
-    }
-
     public function getDel()
     {
         $result = '';
         if(!empty($this->table) && !empty($this->column) && !empty($this->value)) {
-            $result .= ' DELETE FROM ';
+            $result .= 'DELETE FROM ';
             $result .= $this->table;
             if(!empty($this->column) && !empty($this->value)) {
                 $where = new Where;
