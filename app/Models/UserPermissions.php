@@ -3,34 +3,48 @@
 namespace App\Models;
 
 use App\Models\General\Model;
-use Components\Orm\Select;
 use PDO;
 use Core\MyHelp;
 
 class UserPermissions extends Model
 {
-    private $dataPermissions = [];
+    protected $tableName = 'user_permissions';
+    private $conn;
 
-    public function getData()
+    public function all() 
     {
-        return $this->dataPermissions;
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        return $this->conn->execute();
     }
 
-    public function setData($columns = "name", $tableName = 'user_permissions', $order = 'name', $group = 'name')
+    public function deleteRow() 
     {
-        $set = new Select();
-        $set->setColumns($columns);
-        $set->setTableName($tableName);
-        // $set->setOrder($order);
-        // $set->setGroup($group);
-        // $set->setLimit(2);
-        // $set->setOffset(1);
-        $set->setJoinTable('users');
-        $set->setJoinMainColumn('id');
-        $set->setJoinColumn('id_user_permission');
-        $result = $set->execute();
-        while ($row = $result->fetch(PDO::FETCH_LAZY)) {
-            $this->dataPermissions[] = $row->$columns;
+        if(!empty($_GET['id'])) {
+            $this->conn = $this->delete();
+            $this->conn->setTable($this->tableName);
+            $this->conn->setColumn('id');
+            $this->conn->setValue($_GET['id']);
+            return $this->conn->execute();
+        } else {
+            $this->all();
+        }
+    }
+
+    public function insertPermission()
+    {
+        if(!empty($_POST)) {
+            $this->conn = $this->insert();
+            $this->conn->setTable($this->tableName);
+            $columns = [];
+            $values = [];
+            foreach($_POST as $k => $v) {
+                $columns[] = $k;
+                $values[] = $v;
+            }
+            $this->conn->setColumns($columns);
+            $this->conn->setValues($values);
+            return $this->conn->execute();
         }
     }
 }

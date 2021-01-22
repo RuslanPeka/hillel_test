@@ -21,4 +21,19 @@ class Index extends Model
     {
         $this->data = $val;
     }
+
+    public function updateIndex()
+    {
+        return header("Location: http://hilleltest/");
+    }
+
+    public function insertIndex()
+    {
+        return header("Location: http://hilleltest/");
+    }
+
+    public function deleteIndex()
+    {
+        return header("Location: http://hilleltest/");
+    }
 }

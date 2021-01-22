@@ -2,6 +2,7 @@
 
 namespace Components\Orm;
 
+use Components\Orm\Where;
 use Core\MyHelp;
 use PDO;
 
@@ -19,6 +20,9 @@ class Select
     private $joinMainColumn;
     private $joinColumn;
     private $joinComparison = '=';
+
+    private $whereColumn;
+    private $whereCondition;
 
     public function __construct()
     {
@@ -81,7 +85,17 @@ class Select
         $this->joinComparison = $joinComparison;
     }
 
-    private function prepareColumns()
+    public function setWhereColumn($whereColumn)
+    {
+        $this->whereColumn = $whereColumn; 
+    }
+
+    public function setWhereCondition($whereCondition)
+    {
+        $this->whereCondition = $whereCondition; 
+    }
+
+    public function prepareColumns()
     {
         $result = '';
         if(is_array($this->columns)) {
@@ -99,7 +113,7 @@ class Select
         return $result;
     }
 
-    private function prepareTableName()
+    public function prepareTableName()
     {
         $result = '';
         if(is_array($this->tableName)) {
@@ -117,7 +131,7 @@ class Select
         return $result;
     }
 
-    private function prepareJoin()
+    public function prepareJoin()
     {
         $result = '';
         if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) {
@@ -133,6 +147,17 @@ class Select
         return $result;
     }
 
+    public function prepareWhere() {
+        $result = '';
+        if(!empty($this->whereColumn) && !empty($this->whereCondition)) {
+            $where = new Where;
+            $where->setColumn($this->whereColumn);
+            $where->setCondition($this->whereCondition);
+            $result .= $where->getWhere();
+        }
+        return $result;
+    }
+
     private function createSql():string
     {
         $result = '';
@@ -145,13 +170,14 @@ class Select
         if(!empty($this->order)) $result .= ' ORDER BY ' . $this->order;
         if(!empty($this->limit) && empty($this->offset)) $result .= ' LIMIT ' . $this->limit;
         if(!empty($this->limit) && !empty($this->offset)) $result .= ' LIMIT ' . $this->limit . ' OFFSET ' . $this->offset;
-        // MyHelp::export($result);
+        $result .= $this->prepareWhere();
         return $result;
     }
 
     public function execute()
     {
         $sql = $this->createSql();
+        // MyHelp::export($sql);
         return $this->connect->query($sql);
     }
 }

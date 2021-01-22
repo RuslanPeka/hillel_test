@@ -12,36 +12,36 @@ class UsersAdminController extends Controller
 {
     public function index()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
+        $users = new Users();
+        $data = [
+            $users->all(),
+            ''
+        ];
         parent::generate('Admin', 'UsersAdmin', $data);
     }
 
     public function update()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
+        $users = new Users();
+        $users->updateRow();
+        $data = [
+            $users->all(),
+            $users->selectRow()
+        ];
         parent::generate('Admin', 'UsersAdmin', $data);
     }
 
     public function delete()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
-        parent::generate('Admin', 'UsersAdmin', $data);
+        $users = new Users();
+        $users->deleteRow();
+        return header("Location: http://hilleltest/admin/usersAdmin");
     }
 
     public function insert()
     {
-        $objUsers = new Users();
-        $data = $objUsers->all();
-        parent::generate('Admin', 'UsersAdmin', $data);
-    }
-
-    public function select()
-    {
-        $objUsers = new Users();
-        $data = $objUsers->all();
-        parent::generate('Admin', 'UsersAdmin', $data);
+        $users = new Users();
+        $users->insertUser();
+        return header("Location: http://hilleltest/admin/usersAdmin");
     }
 }

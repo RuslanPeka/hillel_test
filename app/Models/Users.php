@@ -3,37 +3,84 @@
 namespace App\Models;
 
 use App\Models\General\Model;
-use Components\Orm\Select;
 use PDO;
 use Core\MyHelp;
 
 class Users extends Model
 {
-    // Добавка с урока №12
     protected $tableName = 'users';
+    private $conn;
 
-    private $dataUsers = [];
-
-    public function getData()
+    public function all() 
     {
-        return $this->dataUsers;
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('user_permissions');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id_permission');
+        $this->conn->setJoinColumn('id_user_permission');
+        return $this->conn->execute();
     }
 
-    // Добавление с урока №12
-    public function all() {
-        $select = $this->select();
-        $select->setTableName($this->tableName);
-        return $select->execute();
+    public function deleteRow() 
+    {
+        if(!empty($_GET['id'])) {
+            $this->conn = $this->delete();
+            $this->conn->setTable($this->tableName);
+            $this->conn->setColumn('id');
+            $this->conn->setValue($_GET['id']);
+            return $this->conn->execute();
+        } else {
+            $this->all();
+        }
     }
 
-    public function setData($columns = 'first_name', $tableName = 'users')
+    public function insertUser()
     {
-        $sel = new Select();
-        $sel->setColumns($columns);
-        $sel->setTableName($tableName);
-        $result = $sel->execute();
-        while ($row = $result->fetch(PDO::FETCH_LAZY)) {
-            $this->dataUsers[] = $row->$columns;
+        if(!empty($_POST)) {
+            $this->conn = $this->insert();
+            $this->conn->setTable($this->tableName);
+            $columns = [];
+            $values = [];
+            foreach($_POST as $k => $v) {
+                if($k != 'id') {
+                    $columns[] = $k;
+                    $values[] = $v;
+                }
+            }
+            $this->conn->setColumns($columns);
+            $this->conn->setValues($values);
+            return $this->conn->execute();
+        }
+    }
+
+    public function selectRow() {
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('user_permissions');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id_permission');
+        $this->conn->setJoinColumn('id_user_permission');
+        $this->conn->setWhereColumn('id');
+        $this->conn->setWhereCondition($_GET['id']);
+        return $this->conn->execute();
+    }
+
+    public function updateRow() {
+        if(!empty($_POST)) {
+            $this->conn = $this->update();
+            $this->conn->setTable($this->tableName);
+            $keys = [];
+            $values = [];
+            foreach($_POST as $k => $v) {
+                $keys[] = $k;
+                $values[] = $v;
+            }
+            $this->conn->setColumn($keys);
+            $this->conn->setValue($values);
+            $this->conn->setWhereColumn('id');
+            $this->conn->setWhereValue($_POST['id']);
+            return $this->conn->execute();
         }
     }
 }

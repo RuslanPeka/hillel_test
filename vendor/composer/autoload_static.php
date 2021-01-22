@@ -43,6 +43,8 @@ class ComposerStaticInit3793c3d086250eb5b765bdc3a4aa1041
         'App\\Controllers\\Main\\GalleryController' => __DIR__ . '/../..' . '/app/Controllers/Main/GalleryController.php',
         'App\\Controllers\\Main\\IndexController' => __DIR__ . '/../..' . '/app/Controllers/Main/IndexController.php',
         'App\\Models\\About' => __DIR__ . '/../..' . '/app/Models/About.php',
+        'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\Articles' => __DIR__ . '/../..' . '/app/Models/Articles.php',
         'App\\Models\\Gallery' => __DIR__ . '/../..' . '/app/Models/Gallery.php',
         'App\\Models\\General\\Model' => __DIR__ . '/../..' . '/app/Models/General/Model.php',
         'App\\Models\\Index' => __DIR__ . '/../..' . '/app/Models/Index.php',

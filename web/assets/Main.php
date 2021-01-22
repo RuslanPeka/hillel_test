@@ -12,15 +12,15 @@
 </head>
 <body>
     <header class="lesson_header">
-        <h1>Классная работа №12 - Работа с формами</h1>
+        <h1>Лучший в Мире Сайт</h1>
     </header>
     <section class="lesson">
         <nav class="main_menu">
             <ul>
                 <li><a href="/index.php/">Главная</a></li><!--
-                --><li class="li_indent"><a href="about">О нас</a></li><!--
-                --><li class="li_indent"><a href="gallery">Галерея</a></li><!--
-                --><li class="li_indent"><a href="/index.php/admin">Админ-панель</a></li>
+                --><li class="li_indent"><a href="/about">О нас</a></li><!--
+                --><li class="li_indent"><a href="/gallery">Галерея</a></li><!--
+                --><li class="li_indent"><a href="/admin">Админ-панель</a></li>
             </ul>
         </nav>
         <div class="main">
