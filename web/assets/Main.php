@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="lesson_header">
-        <h1>Классная работа №12 - Работа с формами</h1>
+        <h1>Лучший в Мире Сайт</h1>
     </header>
     <section class="lesson">
         <nav class="main_menu">

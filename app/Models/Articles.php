@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use App\Models\General\Model;
+use Components\Orm\Select;
 use PDO;
 use Core\MyHelp;
 
-class Users extends Model
+class Articles extends Model
 {
-    protected $tableName = 'users';
+    protected $tableName = 'articles';
 
-    public function all() 
-    {
+    public function all() {
         $select = $this->select();
         $select->setTableName($this->tableName);
         return $select->execute();
@@ -30,7 +30,7 @@ class Users extends Model
         }
     }
 
-    public function insertUser()
+    public function insertArticle()
     {
         if(!empty($_POST)) {
             $insert = $this->insert();

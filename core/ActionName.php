@@ -16,9 +16,12 @@ class ActionName
         $this->actionMap = require_once 'app/Config/actionMap.php';
         $address = $_SERVER['REQUEST_URI'];
         $addressArr = explode('/', $address);
-        $last = array_pop($addressArr);
+        $list = array_pop($addressArr);
         $actionMapArr = $this->actionMap;
         $isAction = false;
+
+        $lastArr = explode('?', $list);
+        $last = $lastArr[0];
 
         foreach($actionMapArr as $v) {
             if($v == $last) {

@@ -30,6 +30,8 @@ class Router
         $classNamespace .= 'Controller';
         $this->classObj = new $classNamespace;
         $actionName = $this->action->getActionName();
+        // MyHelp::export($actionName);
+        // if(isset($_GET)) MyHelp::export($_GET);
         call_user_func(array($this->classObj, $actionName));
     }
 }
