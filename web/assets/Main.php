@@ -18,9 +18,9 @@
         <nav class="main_menu">
             <ul>
                 <li><a href="/index.php/">Главная</a></li><!--
-                --><li class="li_indent"><a href="about">О нас</a></li><!--
-                --><li class="li_indent"><a href="gallery">Галерея</a></li><!--
-                --><li class="li_indent"><a href="/index.php/admin">Админ-панель</a></li>
+                --><li class="li_indent"><a href="/about">О нас</a></li><!--
+                --><li class="li_indent"><a href="/gallery">Галерея</a></li><!--
+                --><li class="li_indent"><a href="/admin">Админ-панель</a></li>
             </ul>
         </nav>
         <div class="main">

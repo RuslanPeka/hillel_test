@@ -9,26 +9,27 @@ use Core\MyHelp;
 class Users extends Model
 {
     protected $tableName = 'users';
+    private $conn;
 
     public function all() 
     {
-        $select = $this->select();
-        $select->setTableName($this->tableName);
-        $select->setJoinTable('user_permissions');
-        $select->setJoinLastTable($this->tableName);
-        $select->setJoinMainColumn('id_permission');
-        $select->setJoinColumn('id_user_permission');
-        return $select->execute();
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('user_permissions');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id_permission');
+        $this->conn->setJoinColumn('id_user_permission');
+        return $this->conn->execute();
     }
 
     public function deleteRow() 
     {
         if(!empty($_GET['id'])) {
-            $delete = $this->delete();
-            $delete->setTable($this->tableName);
-            $delete->setColumn('id');
-            $delete->setValue($_GET['id']);
-            return $delete->execute();
+            $this->conn = $this->delete();
+            $this->conn->setTable($this->tableName);
+            $this->conn->setColumn('id');
+            $this->conn->setValue($_GET['id']);
+            return $this->conn->execute();
         } else {
             $this->all();
         }
@@ -37,17 +38,49 @@ class Users extends Model
     public function insertUser()
     {
         if(!empty($_POST)) {
-            $insert = $this->insert();
-            $insert->setTable($this->tableName);
+            $this->conn = $this->insert();
+            $this->conn->setTable($this->tableName);
             $columns = [];
             $values = [];
             foreach($_POST as $k => $v) {
-                $columns[] = $k;
+                if($k != 'id') {
+                    $columns[] = $k;
+                    $values[] = $v;
+                }
+            }
+            $this->conn->setColumns($columns);
+            $this->conn->setValues($values);
+            return $this->conn->execute();
+        }
+    }
+
+    public function selectRow() {
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('user_permissions');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id_permission');
+        $this->conn->setJoinColumn('id_user_permission');
+        $this->conn->setWhereColumn('id');
+        $this->conn->setWhereCondition($_GET['id']);
+        return $this->conn->execute();
+    }
+
+    public function updateRow() {
+        if(!empty($_POST)) {
+            $this->conn = $this->update();
+            $this->conn->setTable($this->tableName);
+            $keys = [];
+            $values = [];
+            foreach($_POST as $k => $v) {
+                $keys[] = $k;
                 $values[] = $v;
             }
-            $insert->setColumns($columns);
-            $insert->setValues($values);
-            return $insert->execute();
+            $this->conn->setColumn($keys);
+            $this->conn->setValue($values);
+            $this->conn->setWhereColumn('id');
+            $this->conn->setWhereValue($_POST['id']);
+            return $this->conn->execute();
         }
     }
 }

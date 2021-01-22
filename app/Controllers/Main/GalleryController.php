@@ -9,8 +9,26 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $objModel = new Gallery;
-        $modelData = $objModel->getData();
-        $this->generate('Main', 'Gallery', $modelData);
+        $objGallery = new Gallery;
+        $data = $objGallery->getData();
+        $this->generate('Main', 'Gallery', $data);
+    }
+
+    public function update()
+    {
+        $objGallery = new Gallery;
+        $objGallery->updateGallery();
+    }
+
+    public function delete()
+    {
+        $objGallery = new Gallery;
+        $objGallery->deleteGallery();
+    }
+
+    public function insert()
+    {
+        $objGallery = new Gallery;
+        $objGallery->insertGallery();
     }
 }

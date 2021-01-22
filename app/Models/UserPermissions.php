@@ -3,29 +3,29 @@
 namespace App\Models;
 
 use App\Models\General\Model;
-use Components\Orm\Select;
 use PDO;
 use Core\MyHelp;
 
 class UserPermissions extends Model
 {
     protected $tableName = 'user_permissions';
+    private $conn;
 
     public function all() 
     {
-        $select = $this->select();
-        $select->setTableName($this->tableName);
-        return $select->execute();
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        return $this->conn->execute();
     }
 
     public function deleteRow() 
     {
         if(!empty($_GET['id'])) {
-            $delete = $this->delete();
-            $delete->setTable($this->tableName);
-            $delete->setColumn('id');
-            $delete->setValue($_GET['id']);
-            return $delete->execute();
+            $this->conn = $this->delete();
+            $this->conn->setTable($this->tableName);
+            $this->conn->setColumn('id');
+            $this->conn->setValue($_GET['id']);
+            return $this->conn->execute();
         } else {
             $this->all();
         }
@@ -34,17 +34,17 @@ class UserPermissions extends Model
     public function insertPermission()
     {
         if(!empty($_POST)) {
-            $insert = $this->insert();
-            $insert->setTable($this->tableName);
+            $this->conn = $this->insert();
+            $this->conn->setTable($this->tableName);
             $columns = [];
             $values = [];
             foreach($_POST as $k => $v) {
                 $columns[] = $k;
                 $values[] = $v;
             }
-            $insert->setColumns($columns);
-            $insert->setValues($values);
-            return $insert->execute();
+            $this->conn->setColumns($columns);
+            $this->conn->setValues($values);
+            return $this->conn->execute();
         }
     }
 }

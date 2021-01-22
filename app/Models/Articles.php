@@ -10,25 +10,26 @@ use Core\MyHelp;
 class Articles extends Model
 {
     protected $tableName = 'articles';
+    private $conn;
 
     public function all() {
-        $select = $this->select();
-        $select->setTableName($this->tableName);
-        $select->setJoinTable('users');
-        $select->setJoinLastTable($this->tableName);
-        $select->setJoinMainColumn('id');
-        $select->setJoinColumn('id_author');
-        return $select->execute();
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('users');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id');
+        $this->conn->setJoinColumn('id_author');
+        return $this->conn->execute();
     }
 
-    public function deleteRow() 
+    public function deleteArticles() 
     {
         if(!empty($_GET['id_article'])) {
-            $delete = $this->delete();
-            $delete->setTable($this->tableName);
-            $delete->setColumn('id_article');
-            $delete->setValue($_GET['id_article']);
-            return $delete->execute();
+            $this->conn = $this->delete();
+            $this->conn->setTable($this->tableName);
+            $this->conn->setColumn('id_article');
+            $this->conn->setValue($_GET['id_article']);
+            return $this->conn->execute();
         } else {
             $this->all();
         }
@@ -36,18 +37,16 @@ class Articles extends Model
 
     public function insertArticle()
     {
-        if(!empty($_POST)) {
-            $insert = $this->insert();
-            $insert->setTable($this->tableName);
-            $columns = [];
-            $values = [];
-            foreach($_POST as $k => $v) {
-                $columns[] = $k;
-                $values[] = $v;
-            }
-            $insert->setColumns($columns);
-            $insert->setValues($values);
-            return $insert->execute();
-        }
+        return header("Location: http://hilleltest/admin/articlesAdmin");
+    }
+
+    public function updateArticles()
+    {
+        return header("Location: http://hilleltest/admin/articlesAdmin");
+    }
+
+    public function insertArticles()
+    {
+        return header("Location: http://hilleltest/admin/articlesAdmin");
     }
 }

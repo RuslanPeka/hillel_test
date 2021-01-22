@@ -15,6 +15,7 @@ return array(
     'App\\Controllers\\Main\\GalleryController' => $baseDir . '/app/Controllers/Main/GalleryController.php',
     'App\\Controllers\\Main\\IndexController' => $baseDir . '/app/Controllers/Main/IndexController.php',
     'App\\Models\\About' => $baseDir . '/app/Models/About.php',
+    'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Articles' => $baseDir . '/app/Models/Articles.php',
     'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
     'App\\Models\\General\\Model' => $baseDir . '/app/Models/General/Model.php',
