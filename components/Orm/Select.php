@@ -81,7 +81,7 @@ class Select
         $this->joinComparison = $joinComparison;
     }
 
-    private function prepareColumns()
+    public function prepareColumns()
     {
         $result = '';
         if(is_array($this->columns)) {
@@ -99,7 +99,7 @@ class Select
         return $result;
     }
 
-    private function prepareTableName()
+    public function prepareTableName()
     {
         $result = '';
         if(is_array($this->tableName)) {
@@ -117,7 +117,7 @@ class Select
         return $result;
     }
 
-    private function prepareJoin()
+    public function prepareJoin()
     {
         $result = '';
         if(!empty($this->joinTable) && !empty($this->joinMainColumn) && !empty($this->joinColumn)) {
@@ -145,7 +145,6 @@ class Select
         if(!empty($this->order)) $result .= ' ORDER BY ' . $this->order;
         if(!empty($this->limit) && empty($this->offset)) $result .= ' LIMIT ' . $this->limit;
         if(!empty($this->limit) && !empty($this->offset)) $result .= ' LIMIT ' . $this->limit . ' OFFSET ' . $this->offset;
-        // MyHelp::export($result);
         return $result;
     }
 

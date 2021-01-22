@@ -14,16 +14,20 @@ class Articles extends Model
     public function all() {
         $select = $this->select();
         $select->setTableName($this->tableName);
+        $select->setJoinTable('users');
+        $select->setJoinLastTable($this->tableName);
+        $select->setJoinMainColumn('id');
+        $select->setJoinColumn('id_author');
         return $select->execute();
     }
 
     public function deleteRow() 
     {
-        if(!empty($_GET['id'])) {
+        if(!empty($_GET['id_article'])) {
             $delete = $this->delete();
             $delete->setTable($this->tableName);
-            $delete->setColumn('id');
-            $delete->setValue($_GET['id']);
+            $delete->setColumn('id_article');
+            $delete->setValue($_GET['id_article']);
             return $delete->execute();
         } else {
             $this->all();

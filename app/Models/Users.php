@@ -14,6 +14,10 @@ class Users extends Model
     {
         $select = $this->select();
         $select->setTableName($this->tableName);
+        $select->setJoinTable('user_permissions');
+        $select->setJoinLastTable($this->tableName);
+        $select->setJoinMainColumn('id_permission');
+        $select->setJoinColumn('id_user_permission');
         return $select->execute();
     }
 

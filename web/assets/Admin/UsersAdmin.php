@@ -23,7 +23,7 @@
         <td><?= $row['first_name'] ?></td>
         <td><?= $row['second_name'] ?></td>
         <td><?= $row['e_mail'] ?></td>
-        <td><?= $row['id_user_permission'] ?></td>
+        <td><?= $row['name'] ?></td>
         <td><?= $row['create_at'] ?></td>
         <td><?= $row['update_at'] ?></td>
         <td class="delete"><a href="/admin/usersAdmin/delete?id=<?=$row['id']?>" title="Удаление строки">X</a></td>
