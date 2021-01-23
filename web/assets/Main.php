@@ -17,7 +17,7 @@
     <section class="lesson">
         <nav class="main_menu">
             <ul>
-                <li><a href="/index.php/">Главная</a></li><!--
+                <li><a href="/">Главная</a></li><!--
                 --><li class="li_indent"><a href="/about">О нас</a></li><!--
                 --><li class="li_indent"><a href="/gallery">Галерея</a></li><!--
                 --><li class="li_indent"><a href="/admin">Админ-панель</a></li>

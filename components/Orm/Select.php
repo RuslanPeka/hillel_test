@@ -177,6 +177,7 @@ class Select
     public function execute()
     {
         $sql = $this->createSql();
+        $sql = MyHelp::validString($sql);
         // MyHelp::export($sql);
         return $this->connect->query($sql);
     }

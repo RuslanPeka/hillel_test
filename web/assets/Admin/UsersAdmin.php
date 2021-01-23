@@ -38,7 +38,8 @@
 
 <?php
     $action = '';
-    if(mb_strstr($_SERVER['REQUEST_URI'], 'update') && isset($_GET['id'])) {
+    if(mb_strstr($_SERVER['REQUEST_URI'], 'update') && !empty($_GET['id'])) {
+        echo 'asdf'. $_GET['id'];
         $action = 'update';
         $values = [];
         foreach($data[1] as $val) {
@@ -87,7 +88,7 @@
             </table>
             <button type="submit">
                 <?php
-                    if(mb_strstr($_SERVER['REQUEST_URI'], 'update')) echo 'Обновить';
+                    if(mb_strstr($_SERVER['REQUEST_URI'], 'update') && !empty($_GET['id'])) echo 'Обновить';
                     else echo 'Зарегистрировать';
                 ?>
             </button>

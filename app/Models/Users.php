@@ -28,7 +28,7 @@ class Users extends Model
             $this->conn = $this->delete();
             $this->conn->setTable($this->tableName);
             $this->conn->setColumn('id');
-            $this->conn->setValue($_GET['id']);
+            $this->conn->setValue((int) $_GET['id']);
             return $this->conn->execute();
         } else {
             $this->all();
@@ -44,8 +44,9 @@ class Users extends Model
             $values = [];
             foreach($_POST as $k => $v) {
                 if($k != 'id') {
-                    $columns[] = $k;
-                    $values[] = $v;
+                    $columns[] = MyHelp::validString($k);
+                    $values[] = MyHelp::validString($v);
+                    if($k == 'e_mail') $values[$k] = filter_var($v, FILTER_VALIDATE_EMAIL);
                 }
             }
             $this->conn->setColumns($columns);
@@ -62,7 +63,7 @@ class Users extends Model
         $this->conn->setJoinMainColumn('id_permission');
         $this->conn->setJoinColumn('id_user_permission');
         $this->conn->setWhereColumn('id');
-        $this->conn->setWhereCondition($_GET['id']);
+        $this->conn->setWhereCondition((int) $_GET['id']);
         return $this->conn->execute();
     }
 
@@ -73,13 +74,14 @@ class Users extends Model
             $keys = [];
             $values = [];
             foreach($_POST as $k => $v) {
-                $keys[] = $k;
-                $values[] = $v;
+                $keys[] = MyHelp::validString($k);
+                $values[] = MyHelp::validString($v);
+                if($k == 'e_mail') $values[$k] = filter_var($v, FILTER_VALIDATE_EMAIL);
             }
             $this->conn->setColumn($keys);
             $this->conn->setValue($values);
             $this->conn->setWhereColumn('id');
-            $this->conn->setWhereValue($_POST['id']);
+            $this->conn->setWhereValue((int) $_POST['id']);
             return $this->conn->execute();
         }
     }

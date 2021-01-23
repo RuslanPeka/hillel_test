@@ -62,6 +62,7 @@ class Insert
     public function execute()
     {
         $sql = $this->getInsert();
+        $sql = MyHelp::validString($sql);
         return $this->connect->query($sql);
     }
 }

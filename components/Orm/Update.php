@@ -80,7 +80,6 @@ class Update
     public function execute()
     {
         $sql = $this->getUpdate();
-        // MyHelp::export($sql);
         return $this->connect->query($sql);
     }
 }

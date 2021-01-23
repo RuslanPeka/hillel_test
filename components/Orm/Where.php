@@ -2,6 +2,8 @@
 
 namespace Components\Orm;
 
+use Core\MyHelp;
+
 class Where
 {
     const AND_CONDITION = 'AND';

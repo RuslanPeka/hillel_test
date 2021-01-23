@@ -20,11 +20,11 @@ class UserPermissions extends Model
 
     public function deleteRow() 
     {
-        if(!empty($_GET['id'])) {
+        if(!empty((int) $_GET['id'])) {
             $this->conn = $this->delete();
             $this->conn->setTable($this->tableName);
             $this->conn->setColumn('id');
-            $this->conn->setValue($_GET['id']);
+            $this->conn->setValue((int) $_GET['id']);
             return $this->conn->execute();
         } else {
             $this->all();
@@ -39,8 +39,9 @@ class UserPermissions extends Model
             $columns = [];
             $values = [];
             foreach($_POST as $k => $v) {
-                $columns[] = $k;
-                $values[] = $v;
+                $columns[] = MyHelp::validString($k);
+                $values[] = MyHelp::validString($v);
+                if($k == 'e_mail') $values[$k] = filter_var($v, FILTER_VALIDATE_EMAIL);
             }
             $this->conn->setColumns($columns);
             $this->conn->setValues($values);

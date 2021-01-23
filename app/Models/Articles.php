@@ -24,11 +24,11 @@ class Articles extends Model
 
     public function deleteArticles() 
     {
-        if(!empty($_GET['id_article'])) {
+        if(!empty((int) $_GET['id_article'])) {
             $this->conn = $this->delete();
             $this->conn->setTable($this->tableName);
             $this->conn->setColumn('id_article');
-            $this->conn->setValue($_GET['id_article']);
+            $this->conn->setValue((int) $_GET['id_article']);
             return $this->conn->execute();
         } else {
             $this->all();

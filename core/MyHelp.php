@@ -27,4 +27,11 @@ class MyHelp
         $arr = explode('\\', $url);
         return end($arr);
     }
+
+    public static function validString($str)
+    {
+        $str = trim($str);
+        $str = htmlspecialchars($str, ENT_HTML5, 'UTF-8');
+        return $str;
+    }
 }
