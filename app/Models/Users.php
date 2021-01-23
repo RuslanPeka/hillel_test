@@ -9,22 +9,27 @@ use Core\MyHelp;
 class Users extends Model
 {
     protected $tableName = 'users';
+    private $conn;
 
     public function all() 
     {
-        $select = $this->select();
-        $select->setTableName($this->tableName);
-        return $select->execute();
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('user_permissions');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id_permission');
+        $this->conn->setJoinColumn('id_user_permission');
+        return $this->conn->execute();
     }
 
     public function deleteRow() 
     {
         if(!empty($_GET['id'])) {
-            $delete = $this->delete();
-            $delete->setTable($this->tableName);
-            $delete->setColumn('id');
-            $delete->setValue($_GET['id']);
-            return $delete->execute();
+            $this->conn = $this->delete();
+            $this->conn->setTable($this->tableName);
+            $this->conn->setColumn('id');
+            $this->conn->setValue((int) $_GET['id']);
+            return $this->conn->execute();
         } else {
             $this->all();
         }
@@ -33,17 +38,51 @@ class Users extends Model
     public function insertUser()
     {
         if(!empty($_POST)) {
-            $insert = $this->insert();
-            $insert->setTable($this->tableName);
+            $this->conn = $this->insert();
+            $this->conn->setTable($this->tableName);
             $columns = [];
             $values = [];
             foreach($_POST as $k => $v) {
-                $columns[] = $k;
-                $values[] = $v;
+                if($k != 'id') {
+                    $columns[] = MyHelp::validString($k);
+                    $values[] = MyHelp::validString($v);
+                    if($k == 'e_mail') $values[$k] = filter_var($v, FILTER_VALIDATE_EMAIL);
+                }
             }
-            $insert->setColumns($columns);
-            $insert->setValues($values);
-            return $insert->execute();
+            $this->conn->setColumns($columns);
+            $this->conn->setValues($values);
+            return $this->conn->execute();
+        }
+    }
+
+    public function selectRow() {
+        $this->conn = $this->select();
+        $this->conn->setTableName($this->tableName);
+        $this->conn->setJoinTable('user_permissions');
+        $this->conn->setJoinLastTable($this->tableName);
+        $this->conn->setJoinMainColumn('id_permission');
+        $this->conn->setJoinColumn('id_user_permission');
+        $this->conn->setWhereColumn('id');
+        $this->conn->setWhereCondition((int) $_GET['id']);
+        return $this->conn->execute();
+    }
+
+    public function updateRow() {
+        if(!empty($_POST)) {
+            $this->conn = $this->update();
+            $this->conn->setTable($this->tableName);
+            $keys = [];
+            $values = [];
+            foreach($_POST as $k => $v) {
+                $keys[] = MyHelp::validString($k);
+                $values[] = MyHelp::validString($v);
+                if($k == 'e_mail') $values[$k] = filter_var($v, FILTER_VALIDATE_EMAIL);
+            }
+            $this->conn->setColumn($keys);
+            $this->conn->setValue($values);
+            $this->conn->setWhereColumn('id');
+            $this->conn->setWhereValue((int) $_POST['id']);
+            return $this->conn->execute();
         }
     }
 }

@@ -21,4 +21,19 @@ class About extends Model
     {
         $this->data = $val;
     }
+
+    public function updateAbout()
+    {
+        return header("Location: http://hilleltest/about");
+    }
+
+    public function insertAbout()
+    {
+        return header("Location: http://hilleltest/about");
+    }
+
+    public function deleteAbout()
+    {
+        return header("Location: http://hilleltest/about");
+    }
 }

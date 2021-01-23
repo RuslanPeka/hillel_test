@@ -59,6 +59,7 @@ class Delete
     public function execute()
     {
         $sql = $this->getDel();
+        $sql = MyHelp::validString($sql);
         return $this->connect->query($sql);
     }
 }

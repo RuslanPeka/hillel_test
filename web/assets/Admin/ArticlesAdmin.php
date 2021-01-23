@@ -16,18 +16,18 @@
     </tr>
 
     <?php
-        foreach($data as $row) :
+       foreach($data as $row) :
     ?>
 
     <tr>
-        <td><?= $row['id'] ?></td>
+        <td><?= $row['id_article'] ?></td>
         <td><?= $row['header'] ?></td>
         <td><?= $row['description'] ?></td>
         <td><?= $row['contents'] ?></td>
-        <td><?= $row['author'] ?></td>
-        <td><?= $row['create_at'] ?></td>
-        <td><?= $row['update_at'] ?></td>
-        <td class="delete"><a href="/admin/articlesAdmin/delete?id=<?=$row['id']?>" title="Удаление строки">X</a></td>
+        <td><?= $row['first_name'] ?> <?= $row['second_name'] ?></td>
+        <td><?= $row['create_at_article'] ?></td>
+        <td><?= $row['update_at_article'] ?></td>
+        <td class="delete"><a href="/admin/articlesAdmin/delete?id_article=<?=$row['id_article']?>" title="Удаление строки">X</a></td>
     </tr>
 
     <?php endforeach ?>

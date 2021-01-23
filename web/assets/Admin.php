@@ -17,10 +17,10 @@
     <section class="lesson">
         <nav class="main_menu">
             <ul>
-                <li><a href="/index.php/admin">Главная страница</a></li><!--
-                --><li class="li_indent"><a href="/index.php/admin/articlesAdmin">Статьи</a></li><!--
-                --><li class="li_indent"><a href="/index.php/admin/usersAdmin">Пользователи</a></li><!--
-                --><li class="li_indent"><a href="/index.php/">Сайт</a></li>
+                <li><a href="/admin">Главная страница</a></li><!--
+                --><li class="li_indent"><a href="/admin/articlesAdmin">Статьи</a></li><!--
+                --><li class="li_indent"><a href="/admin/usersAdmin">Пользователи</a></li><!--
+                --><li class="li_indent"><a href="/">Сайт</a></li>
             </ul>
         </nav>
         <div class="main">

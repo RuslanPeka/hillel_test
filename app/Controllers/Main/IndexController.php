@@ -13,4 +13,22 @@ class IndexController extends Controller
         $modelData = $objModel->getData();
         $this->generate('Main', 'Main', $modelData);
     }
+
+    public function update()
+    {
+        $objIndex = new Index;
+        $objIndex->updateIndex();
+    }
+
+    public function delete()
+    {
+        $objIndex = new Index;
+        $objIndex->deleteIndex();
+    }
+
+    public function insert()
+    {
+        $objIndex = new Index;
+        $objIndex->insertIndex();
+    }
 }

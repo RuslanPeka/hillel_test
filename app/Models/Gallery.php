@@ -21,4 +21,19 @@ class Gallery extends Model
     {
         $this->data = $val;
     }
+
+    public function updateGallery()
+    {
+        return header("Location: http://hilleltest/gallery");
+    }
+
+    public function insertGallery()
+    {
+        return header("Location: http://hilleltest/gallery");
+    }
+
+    public function deleteGallery()
+    {
+        return header("Location: http://hilleltest/gallery");
+    }
 }

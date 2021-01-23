@@ -39,7 +39,7 @@ class Insert
     {
         $result = '';
         if(!empty($this->table) && !empty($this->columns) && !empty($this->values)) {
-            $result .= ' INSERT INTO ' . $this->table . '(';
+            $result .= 'INSERT INTO ' . $this->table . '(';
             if(is_array($this->columns)) {
                 $count = count($this->columns);
                 for($i = 0; $i < $count; $i++) {
@@ -62,6 +62,7 @@ class Insert
     public function execute()
     {
         $sql = $this->getInsert();
+        $sql = MyHelp::validString($sql);
         return $this->connect->query($sql);
     }
 }
